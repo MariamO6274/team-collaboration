@@ -1,5 +1,6 @@
 import React from "react";
 import { useReducer } from "react";
+import PropComponent from "./PropComponent";
 
 function reducer(state, action) {
   // logic will go here
@@ -40,6 +41,7 @@ function Counter() {
 
   return (
     <div>
+      <PropComponent name="Mariam" age={34} favoriteColor={["green", "black"]} />
       Counter: {state.counter}
       <button onClick={increamentClick}>Increment</button>
       <button onClick={decreamentClick}>Decremente</button>
