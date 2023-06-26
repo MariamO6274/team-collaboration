@@ -41,10 +41,18 @@ function Counter() {
 
   return (
     <div>
-      <PropComponent name="Mariam" age={34} favoriteColor={["green", "black"]} />
+      <PropComponent
+        name="Mariam"
+        age={34}
+        favoriteColor={["green", "black"]}
+      />
       Counter: {state.counter}
-      <button onClick={increamentClick}>Increment</button>
-      <button onClick={decreamentClick}>Decremente</button>
+      <button onClick={increamentClick} disabled={state.counter === 5}>
+        Increment
+      </button>
+      <button onClick={decreamentClick} disabled={state.counter === - 5}>
+        Decremente
+      </button>
     </div>
   );
 }
