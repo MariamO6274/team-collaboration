@@ -1,6 +1,7 @@
 import React from "react";
 
-const ProductsCards = () => {
+const ProductsCards = (props) => {
+      const { title, imageUrl } = props;
   return <>hello</>;
 };
 

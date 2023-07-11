@@ -6,7 +6,7 @@ import ProductsCards from "./ProductsCards";
 // You create a drop down for addending and dissenting orders..sorting
 
 const FakeStoreApiApp = () => {
-  const [products, setproducts] = useState();
+  const [products, setproducts] = useState([]);
 
   useEffect(() => {
     setTimeout(()=> {
@@ -20,9 +20,20 @@ const FakeStoreApiApp = () => {
     }, 2000)
   }, []);
 
-  return <div>
-    <ProductsCards/>
-  </div>;
+  return (
+    <>
+      <ProductsCards/>
+      <div className="container">
+        <div className="box">
+            <div className="content">
+                <h5>Title</h5>
+                <p>Description</p>
+            </div>
+            <h1>Products Images</h1>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default FakeStoreApiApp;
