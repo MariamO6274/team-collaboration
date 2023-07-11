@@ -8,7 +8,7 @@ function UseStateDarkLight() {
       {isDark ? <h1>It is Dark</h1> : <h1>It is Not Dark</h1>}
       <button
         onClick={() => {
-          setIsDark(!isDark); // setIsDark(true)??? changed only once but it chages in log
+          setIsDark(!isDark); 
           console.log(isDark);
         }}
       >

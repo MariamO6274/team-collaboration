@@ -3,23 +3,26 @@ import { useReducer } from "react";
 import PropComponent from "./PropComponent";
 
 function reducer(state, action) {
-  // logic will go here
-  if(action.type === "increament"){
+  if (action.type === "increament") {
     return {
-        ...state,
-        counter: state.counter + 1
-    }
+      ...state,
+      counter: state.counter + 1,
+    };
   }
 
-// go up to +5 and -5 then disable the button
- 
-    if (action.type === "decreament") {
-      return {
+  if (action.type === "decreament") {
+    return {
+      ...state,
+      counter: state.counter - 1,
+    };
+  }
+
+  if (action.type === "reset") {
+    return {
         ...state,
-        counter: state.counter - 1,
-      };
+        counter: state.count = 0
     }
- 
+  }
 }
 
 function Counter() {
@@ -29,13 +32,13 @@ function Counter() {
 
   function increamentClick() {
     dispatch({
-        type: "increament"
+      type: "increament",
     });
   }
 
   function decreamentClick() {
     dispatch({
-        type: "decreament"
+      type: "decreament",
     });
   }
 
@@ -46,12 +49,23 @@ function Counter() {
         age={34}
         favoriteColor={["green", "black"]}
       />
+      <br />
       Counter: {state.counter}
+      <br />
       <button onClick={increamentClick} disabled={state.counter === 5}>
         Increment
       </button>
-      <button onClick={decreamentClick} disabled={state.counter === - 5}>
+      <button onClick={decreamentClick} disabled={state.counter === -5}>
         Decremente
+      </button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: "reset",
+          });
+        }}
+      >
+        Reset
       </button>
     </div>
   );
