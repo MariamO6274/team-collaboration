@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Outfit:wght@300&display=swap");
 
 body {
-  background-color: linear-gradient(180deg, #ffffff 0%, #f0f1ff 100%);
+  background-color: #ffffff;;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -25,11 +25,21 @@ body {
 
 .cards:hover {
   border: 1px solid gray;
+  border-radius: 5px;
 }
 
 p {
   font-size: 0.9em;
   line-height: 1.6em;
+}
+
+h1 {
+  color: #13183f;
+  text-align: center;
+  font-size: 50px;
+  line-height: 48px;
+  font-weight: 600;
+  
 }
 
 h3 {

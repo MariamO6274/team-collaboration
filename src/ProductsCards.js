@@ -24,12 +24,13 @@ const ProductsCards = (props) => {
             <>
               <div className="cards">
                 <div className="card-content">
+                  <img src={product.image} />
                   <h3>{product.title}</h3>
+                  <h4>$ {product.price}</h4>
                   <hr />
-                  <p>{description}</p>
-                  <h3>$ {price}</h3>
+                  <p>{product.description}</p>
                 </div>
-                <img src={image} />
+                <button>Buy</button>
               </div>
             </>
           );
