@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import ProductsCards from "./ProductsCards";
+import "./App.css";
 
 // You’ll get this 20 products, out of this 20 products, you show all this 20 products in cards,
 // You create a drop down for addending and dissenting orders..sorting

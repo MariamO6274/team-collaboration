@@ -3,6 +3,7 @@ import "./App.css";
 import { useReducer } from "react";
 
 
+
 // 3. function reducer 
 // 5. takes state n action as argument
 function reducer(state, action) {
