@@ -10,28 +10,34 @@ const FakeStoreApiApp = () => {
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
-    setTimeout(()=> {
-
-        fetch("https://fakestoreapi.com/products")
+    setTimeout(() => {
+      fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
         .then((json) => {
-            console.log(json);
-            setproducts(json); // save 20 obj to the state for re-render
+          console.log(json);
+          setproducts(json); // save 20 obj to the state for re-render
         });
-    }, 2000)
+    }, 2000);
   }, []);
 
   return (
     <>
-      <ProductsCards/>
+      <ProductsCards />
       <div className="container">
-        <div className="box">
-            <div className="content">
-                <h5>Title</h5>
-                <p>Description</p>
-            </div>
-            <h1>Products Images</h1>
-        </div>
+        {products.map((product) => {
+          return (
+            <>
+              <div className="cards">
+                <div className="card-content">
+                  <h3>{product.title}</h3>
+                  <p>{product.description}</p>
+                  <h3>$ {product.price}</h3>
+                </div>
+                <img src={product.image} />
+              </div>
+            </>
+          );
+        })}
       </div>
     </>
   );

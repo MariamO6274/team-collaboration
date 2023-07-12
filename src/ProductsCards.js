@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductsCards = (props) => {
       const { title, imageUrl } = props;
-  return <>hello</>;
+  return <></>;
 };
 
 export default ProductsCards;
