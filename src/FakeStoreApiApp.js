@@ -4,8 +4,6 @@ import ProductsCards from "./ProductsCards";
 import "./App.css";
 
 const FakeStoreApiApp = () => {
-
-
   const [products, setproducts] = useState([]);
 
   useEffect(() => {
@@ -38,11 +36,13 @@ const FakeStoreApiApp = () => {
                   <hr />
                   <p>{product.description}</p>
                 </div>
+                <button>Buy</button>
               </div>
             </>
           );
         })}
       </div>
+      
     </>
   );
 };
