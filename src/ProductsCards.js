@@ -1,21 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import "./App.css";
 
 const ProductsCards = (props) => {
-  const { title, image, description, price } = props;
-  const [products, setproducts] = useState([]);
+  console.log(props);
 
-    useEffect(() => {
-      setTimeout(() => {
-        fetch("https://fakestoreapi.com/products")
-          .then((res) => res.json())
-          .then((json) => {
-            console.log(json);
-            setproducts(json);
-          });
-      }, 2000);
-    }, []);
+  const products = props.productData;
+
   return (
     <>
       <div className="container">
