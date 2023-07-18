@@ -1,59 +1,109 @@
 import React, { useEffect, useState } from "react";
 import ProductsCards from "./ProductsCards";
 import "./App.css";
-import ProductCard from "./ProductCard";
 
 const FakeStoreApiApp = () => {
-  const [products, setproducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  //  const [filterItems, setFilterItems] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
       fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-          setproducts(json);
+        .then((data) => {
+          console.log(data);
+          setProducts(data);
         });
-    }, 2000);
+    }, 1000);
   }, []);
 
-    // useEffect(() => {
-    //   setTimeout(async () => {
-    //     const response = await fetch("https://fakestoreapi.com/products");
-    //     const data = await response.json();
+  useEffect(() => {
+    if (products.length === 0) {
+      return <>Loading...!!!!!!</>;
+    }
+  }, []);
 
-    //     console.log(data);
-    //     setproducts(data);
-    //   }, 2000);
-    // }, []);
+  const handelAsending = () => {
+    console.log(products);
+    const sortedProducts = [...products];
+    sortedProducts.sort((a, b) => {
+      if (a.price < b.price) {
+        return -1;
+      } else return 1;
+    });
+    setProducts(sortedProducts);
+  };
 
-  let renderedList = products.map((product) => {
-    return (
-      <ProductCard
-        title={product.title}
-        image={product.image}
-        price={product.price}
-        description={product.description}
-      />
-    );
-  });
+  const handelDescending = () => {
+    const sortetHightToLow = [...products];
+    sortetHightToLow.sort((a, b) => {
+      if (a.price < b.price) {
+        return 1;
+      } else return -1;
+    });
+    setProducts(sortetHightToLow);
+  };
+  // original
+  const handelInput = (eventDetails) => {
+    console.log(eventDetails.target.value);
+    const result = eventDetails.target.value;
 
-  console.log(renderedList);
+    const filterProducts = [];
+    for (let i = 0; i < products.length; i++) {
+      let product = products[i];
+      if (result === product.title) {
+        filterProducts.push(product);
+      }
+    }
+    setProducts(filterProducts);
+  };
 
-  if (products.length == 0) {
-    return <>Loading...!!!!!!</>;
-  }
+  //
+  // const handelInput = (eventDetails) => {
+  //   console.log(eventDetails.target.value);
+  //   const result = eventDetails.target.value;
 
-  const handelSort = () => {
-    console.log(products)
-    
-  }
+  //   const filterProducts = [];
+  //   for (let i = 0; i < products.length; i++) {
+  //     let product = products[i];
+  //     product.filter((item)=>{
+  //       return product.toLowerCase() === " "
+  //         ? item
+  //         : item.toLowerCase().includes(result);
+  //     })
+  //     if (result === product.title) {
+  //       filterProducts.push(product);
+  //     }
+  //   }
+  //   setFilterItems(filterProducts);
+  // };
+  //
+
+  // const handelInput = (eventDetails) => {
+  //   console.log(eventDetails.target.value);
+  //   setFilterProducts(eventDetails.target.value);
+
+  //   const filterProducts = [];
+  //   for (let i = 0; i < products.length; i++) {
+  //     let product = products[i];
+  //     product.filter((item) => {
+  //       return filterProducts.toLowerCase() === " "
+  //         ? item
+  //         : item.title.toLowerCase().includes(filterProducts);
+  //     });
+  //   }
+  //   setFilterProducts(filterProducts);
+  // };
+
   return (
     <>
       <h1> 20 Products from Fake Store API</h1>
-      <button onClick = {handelSort}>Sort asending</button>
-      {/* <div className="container">{renderedList}</div> */}
-      <ProductsCards productData={products} title={"Hello"} />
+      <button onClick={handelAsending}>Asending</button>
+      <button onClick={handelDescending}>Descending</button>
+      <input type="text" onChange={handelInput} />
+      <br />
+      <br />
+      <ProductsCards productData={products} />
     </>
   );
 };

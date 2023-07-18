@@ -9,4 +9,4 @@ import ProductApp from "./ProductApp";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(<UseStateDarkLight />);
 
-root.render(<ProductApp />);
+root.render(<FakeStoreApiApp />);

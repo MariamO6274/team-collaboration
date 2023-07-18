@@ -5,22 +5,22 @@ const ProductsCards = (props) => {
   console.log(props);
 
   const products = props.productData;
+  
 
   return (
     <>
-      <div className="container">
+      <div>
         {products.map((product) => {
           return (
             <>
-              <div className="cards">
-                <div className="card-content">
+              <div >
+                <div style={{ width: "400px", height: "500px" }}>
                   <img src={product.image} />
                   <h3>{product.title}</h3>
-                  <h4>$ {product.price}</h4>
+                  <h4>${product.price}</h4>
                   <hr />
                   <p>{product.description}</p>
                 </div>
-                <button>Buy</button>
               </div>
             </>
           );
