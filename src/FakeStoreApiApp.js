@@ -4,7 +4,7 @@ import "./App.css";
 
 const FakeStoreApiApp = () => {
   const [products, setProducts] = useState([]);
-  //  const [filterItems, setFilterItems] = useState("");
+  const [filterItems, setFilterItems] = useState("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,22 +43,7 @@ const FakeStoreApiApp = () => {
     });
     setProducts(sortetHightToLow);
   };
-  // original
-  const handelInput = (eventDetails) => {
-    console.log(eventDetails.target.value);
-    const result = eventDetails.target.value;
-
-    const filterProducts = [];
-    for (let i = 0; i < products.length; i++) {
-      let product = products[i];
-      if (result === product.title) {
-        filterProducts.push(product);
-      }
-    }
-    setProducts(filterProducts);
-  };
-
-  //
+  // // original
   // const handelInput = (eventDetails) => {
   //   console.log(eventDetails.target.value);
   //   const result = eventDetails.target.value;
@@ -66,44 +51,28 @@ const FakeStoreApiApp = () => {
   //   const filterProducts = [];
   //   for (let i = 0; i < products.length; i++) {
   //     let product = products[i];
-  //     product.filter((item)=>{
-  //       return product.toLowerCase() === " "
-  //         ? item
-  //         : item.toLowerCase().includes(result);
-  //     })
   //     if (result === product.title) {
   //       filterProducts.push(product);
   //     }
   //   }
-  //   setFilterItems(filterProducts);
+  //   setProducts(filterProducts);
   // };
-  //
 
-  // const handelInput = (eventDetails) => {
-  //   console.log(eventDetails.target.value);
-  //   setFilterProducts(eventDetails.target.value);
-
-  //   const filterProducts = [];
-  //   for (let i = 0; i < products.length; i++) {
-  //     let product = products[i];
-  //     product.filter((item) => {
-  //       return filterProducts.toLowerCase() === " "
-  //         ? item
-  //         : item.title.toLowerCase().includes(filterProducts);
-  //     });
-  //   }
-  //   setFilterProducts(filterProducts);
-  // };
+const search = (productData) => {
+  return productData.filter((item) =>
+    item.title.toLowerCase().includes(filterItems)
+  );
+}
 
   return (
     <>
       <h1> 20 Products from Fake Store API</h1>
       <button onClick={handelAsending}>Asending</button>
       <button onClick={handelDescending}>Descending</button>
-      <input type="text" onChange={handelInput} />
+      <input type="search" placeholder="Search..." onChange={(e) => setFilterItems(e.target.value)} />
       <br />
       <br />
-      <ProductsCards productData={products} />
+      <ProductsCards productData={search(products)} />
     </>
   );
 };
