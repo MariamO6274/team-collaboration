@@ -17,11 +17,15 @@ const FakeStoreApiApp = () => {
     }, 1000);
   }, []);
 
-  useEffect(() => {
-    if (products.length === 0) {
-      return <>Loading...!!!!!!</>;
-    }
-  }, []);
+   if (products.length === 0) {
+       return <>Loading...!!!!!!</>;
+     }
+
+  // useEffect(() => {
+  //   if (products.length === 0) {
+  //     return <>Loading...!!!!!!</>;
+  //   }
+  // }, []);
 
   const handelAsending = () => {
     console.log(products);
@@ -69,7 +73,14 @@ const search = (productData) => {
       <h1> 20 Products from Fake Store API</h1>
       <button onClick={handelAsending}>Asending</button>
       <button onClick={handelDescending}>Descending</button>
-      <input type="search" placeholder="Search..." onChange={(e) => setFilterItems(e.target.value)} />
+      <br />
+      <br />
+      <input
+        type="search"
+        placeholder="Search..."
+        onChange={(e) => setFilterItems(e.target.value)}
+        style={{ width: "300px", height: "30px", borderRadius: "20px", padding: "20px" }}
+      />
       <br />
       <br />
       <ProductsCards productData={search(products)} />

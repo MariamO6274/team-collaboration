@@ -4,7 +4,7 @@ import "./App.css";
 const ProductsCards = ({ productData }) => {
   //const ProductsCards = (props) => {
   // console.log(props);
-
+  // other ways of useing props
   // const products = props.productData;
 
   return (
